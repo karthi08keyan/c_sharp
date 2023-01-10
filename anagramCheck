@@ -1,0 +1,36 @@
+using System;
+using System.Linq;
+
+namespace Anagram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter the first string: ");
+            string str1 = Console.ReadLine();
+
+            Console.Write("Enter the second string: ");
+            string str2 = Console.ReadLine();
+
+            if (IsAnagram(str1, str2))
+            {
+                Console.WriteLine("The strings are anagrams.");
+            }
+            else
+            {
+                Console.WriteLine("The strings are not anagrams.");
+            }
+        }
+
+        static bool IsAnagram(string str1, string str2)
+        {
+            // Sort the characters in both strings
+            char[] sorted1 = str1.OrderBy(c => c).ToArray();
+            char[] sorted2 = str2.OrderBy(c => c).ToArray();
+
+            // Compare the sorted strings
+            return sorted1.SequenceEqual(sorted2);
+        }
+    }
+}
